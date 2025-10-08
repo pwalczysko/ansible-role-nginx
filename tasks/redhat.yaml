@@ -21,7 +21,7 @@
     name: "https://nginx.org/packages/centos/9/x86_64/RPMS/\
            nginx-{{ nginx_version }}-1.el9.ngx.x86_64.rpm"
     state: present
-  when: nginx_version != ""
+  when: nginx_version | length >  0
 
 - name: system packages | remove nginx
   become: true
