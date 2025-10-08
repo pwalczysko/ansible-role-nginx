@@ -23,6 +23,8 @@
     state: present
   when: nginx_version | length >  0
 
+# Sometimes necessary to override the nginx
+# by default by the OS
 - name: system packages | remove nginx
   become: true
   ansible.builtin.dnf:
