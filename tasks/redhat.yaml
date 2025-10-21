@@ -9,8 +9,7 @@
   become: true
   ansible.builtin.dnf:
     update_cache: true
-    name: "https://nginx.org/packages/centos/9/x86_64/RPMS/\
-           nginx-1.26.2-2.el9.ngx.x86_64.rpm"
+    name: "https://nginx.org/packages/centos/9/x86_64/RPMS/nginx-1.28.0-1.el9.ngx.x86_64.rpm"
     state: present
   when: nginx_version | length == 0
 
@@ -22,6 +21,7 @@
            nginx-{{ nginx_version }}-1.el9.ngx.x86_64.rpm"
     state: present
   when: nginx_version | length >  0
+  when: nginx_stable_repo == false
 
 # Sometimes necessary to override the nginx
 # by default by the OS
